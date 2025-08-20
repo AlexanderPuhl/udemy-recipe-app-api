@@ -24,11 +24,11 @@ RUN python -m venv /py && \
 # Create a Python virtual environment at the /py directory.
     /py/bin/pip install --upgrade pip && \
 # Upgrade the pip installer within the virtual environment.
-    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache postgresql-client jpeg-dev && \
 # Install the PostgreSQL client libraries using the Alpine package manager (apk).
     apk add --update --no-cache --virtual .tmp-build-deps \
 # Install temporary build dependencies (like compilers and libraries) required to compile some Python packages.
-        build-base postgresql-dev musl-dev && \
+        build-base postgresql-dev musl-dev zlib zlib-dev && \
 # List the temporary build dependencies.
     /py/bin/pip install -r /tmp/requirements.txt && \
 # Install the main application dependencies from requirements.txt.
